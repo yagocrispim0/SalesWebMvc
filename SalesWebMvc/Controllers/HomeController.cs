@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Models;
+using SalesWebMvc.Models.ViewModels;
 using System.Diagnostics;
 
 namespace SalesWebMvc.Controllers
@@ -26,6 +27,11 @@ namespace SalesWebMvc.Controllers
         }
 
         public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Departments()
         {
             return View();
         }
