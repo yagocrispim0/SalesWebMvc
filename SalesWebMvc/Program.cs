@@ -12,6 +12,8 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), builder => builder.MigrationsAssembly("SalesWebMvc")));
 
 
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
