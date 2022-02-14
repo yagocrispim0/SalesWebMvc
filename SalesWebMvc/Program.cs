@@ -12,13 +12,29 @@ string connectionString = builder.Configuration.GetConnectionString("SalesWebMvc
 builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), builder => builder.MigrationsAssembly("SalesWebMvc")));
 
-builder.Services.AddScoped<SellerService>();  
+builder.Services.AddScoped<SellerService>();
+builder.Services.AddTransient<SeedingService>();
+
 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+SeedData(app);
+/*if (args.Length == 1 && args[0].ToLower() == "seeddata")
+    SeedData(app);*/
+//Seed Data
+void SeedData(IHost app)
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+    using (var scope = scopedFactory.CreateScope())
+    {
+        var service = scope.ServiceProvider.GetService<SeedingService>();
+        service.Seed();
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
