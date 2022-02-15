@@ -21,9 +21,9 @@ builder.Services.AddTransient<SeedingService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+
 SeedData(app);
-/*if (args.Length == 1 && args[0].ToLower() == "seeddata")
-    SeedData(app);*/
 //Seed Data
 void SeedData(IHost app)
 {
