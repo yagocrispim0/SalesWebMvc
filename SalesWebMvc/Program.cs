@@ -15,6 +15,7 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), builder => builder.MigrationsAssembly("SalesWebMvc")));
 
 builder.Services.AddScoped<SellerService>();
+builder.Services.AddScoped<SalesRecordService>();
 builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddTransient<SeedingService>();
 
