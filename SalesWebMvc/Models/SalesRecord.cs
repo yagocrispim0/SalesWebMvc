@@ -9,7 +9,7 @@ namespace SalesWebMvc.Models
  
         [Display(Name = "Birth date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
         public double Amount { get; set; }
         public SaleStatus Status { get; set; }
